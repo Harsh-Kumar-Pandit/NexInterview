@@ -1,5 +1,5 @@
-import {StreamChat} from "stream_chat"
-import { ENV } from "./env"
+import {StreamChat} from "stream-chat"
+import { ENV } from "./env.js"
 
 
 const apiKey = ENV.STREAM.API_KEY;
@@ -17,6 +17,7 @@ export const upsertStreamUser = async (userData) => {
         console.log("Stream user upserted successfully:", userData);
     } catch (error) {
         console.error("Error upserting Stream user:", error)
+        throw error;
     }
 }
 export const deleteStreamUser = async (userData) => {
