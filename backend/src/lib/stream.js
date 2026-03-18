@@ -1,4 +1,4 @@
-import {StreamChat} from "stream_chat"
+import {StreamChat} from "stream-chat"
 import { ENV } from "./env"
 
 
