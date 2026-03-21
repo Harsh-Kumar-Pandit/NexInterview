@@ -1,27 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
-import { Show, SignInButton, SignUpButton, UserButton } from '@clerk/react'
+import { Navigate, Route, Routes } from 'react-router'
+import HomePage from './pages/HomePage'
+import { useUser } from '@clerk/react'
+import { Toaster } from 'react-hot-toast';
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const {isSignedIn} = useUser(); 
 
   return (
     <>
-    <header>
-        <Show when="signed-out">
-          <SignInButton mode="modal">
-             <button>Login</button>
-          </SignInButton>
-         
-          <SignUpButton mode='modal'/>
-        </Show>
-        <Show when="signed-in">
-          <UserButton />
-        </Show>
-      </header>
+    <Routes>
+      <Route path='/' element={<HomePage/>}/>
+      <Route path='/problems' element={isSignedIn ? <ProblemPage/> : <Navigate to={'/'}/>}/>
+    </Routes>
+    <Toaster toastOptions={{duration: 2000}}/>
     </>
   )
 }
