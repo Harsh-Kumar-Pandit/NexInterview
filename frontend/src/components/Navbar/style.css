@@ -1,0 +1,236 @@
+@import url("https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:wght@400;500&display=swap");
+
+
+
+.nexnav {
+  font-family: "Sora", sans-serif;
+}
+
+.nexnav-root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 0 2rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(8, 10, 20, 0.72);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(129, 140, 248, 0.12);
+  box-shadow:
+    0 1px 40px rgba(0, 0, 0, 0.4),
+    0 0 0 0.5px rgba(129, 140, 248, 0.08);
+}
+
+/* Subtle top accent line */
+.nexnav-root::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 15%;
+  right: 15%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(129, 140, 248, 0.5) 30%,
+    rgba(167, 139, 250, 0.5) 70%,
+    transparent
+  );
+}
+
+/* Logo */
+.nexnav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  user-select: none;
+}
+
+.nexnav-logo-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.nexnav-logo:hover .nexnav-logo-icon {
+  transform: rotate(10deg) scale(1.05);
+}
+
+.nexnav-logo-glow {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(129, 140, 248, 0.25) 0%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+.nexnav-wordmark {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.nexnav-name {
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #e0e7ff 20%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.nexnav-tagline {
+  font-size: 0.58rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(129, 140, 248, 0.6);
+  margin-top: 1px;
+}
+
+/* Nav links */
+.nexnav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.nexnav-link {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(200, 210, 255, 0.55);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  letter-spacing: 0.01em;
+  transition:
+    color 0.2s,
+    background 0.2s;
+}
+
+.nexnav-link:hover {
+  color: rgba(224, 231, 255, 0.9);
+  background: rgba(129, 140, 248, 0.08);
+}
+
+/* Right actions */
+.nexnav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.nexnav-badge {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(129, 140, 248, 0.7);
+  background: rgba(129, 140, 248, 0.08);
+  border: 1px solid rgba(129, 140, 248, 0.18);
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+.nexnav-cta {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-family: "Sora", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #fff;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  box-shadow:
+    0 0 0 1px rgba(99, 102, 241, 0.3),
+    0 4px 20px rgba(99, 102, 241, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+  transition:
+    transform 0.15s,
+    box-shadow 0.15s,
+    filter 0.15s;
+  overflow: hidden;
+}
+
+.nexnav-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.12),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.nexnav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow:
+    0 0 0 1px rgba(99, 102, 241, 0.5),
+    0 8px 28px rgba(99, 102, 241, 0.45),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  filter: brightness(1.08);
+}
+
+.nexnav-cta:hover::before {
+  left: 150%;
+}
+
+.nexnav-cta:active {
+  transform: translateY(0);
+}
+
+.nexnav-cta-arrow {
+  opacity: 0.8;
+  transition: transform 0.2s;
+  font-size: 0.9rem;
+}
+
+.nexnav-cta:hover .nexnav-cta-arrow {
+  transform: translateX(3px);
+}
+
+/* Divider */
+.nexnav-sep {
+  width: 1px;
+  height: 18px;
+  background: rgba(129, 140, 248, 0.15);
+  margin: 0 4px;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .nexnav-links {
+    display: none;
+  }
+  .nexnav-badge {
+    display: none;
+  }
+  .nexnav-root {
+    padding: 0 1.2rem;
+  }
+}
