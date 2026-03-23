@@ -1,21 +1,15 @@
 import { Show, SignInButton, SignUpButton, UserButton, useUser } from '@clerk/react'
 import React from 'react'
+import Navbar from '../components/Navbar/Navbar'
+import Hero from '../components/Hero/Hero'
+import Features from '../components/Feratures/Features'
 
 const HomePage = () => {
   return (
     <div>
-    <header className='text-red-500'>
-        <Show when="signed-out">
-          <SignInButton mode="modal">
-             <button>Login</button>
-          </SignInButton>
-         
-          <SignUpButton mode='modal'/>
-        </Show>
-        <Show when="signed-in">
-          <UserButton />
-        </Show>
-      </header>
+  <Navbar/>
+  <Hero/>
+  <Features/>
     </div>
   )
 }
