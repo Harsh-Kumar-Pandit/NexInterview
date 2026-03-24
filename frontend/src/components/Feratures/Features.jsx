@@ -1,5 +1,5 @@
+import FeatureCard from "./Featurecard";
 import "./style.css";
-import FeatureCard from "./FeatureCard";
 
 // ── SVG Icons ──────────────────────────────────────────────
 function VideoIcon() {
