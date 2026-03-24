@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { SignInButton, UserButton, useUser } from "@clerk/react";
-import "./style.css"
+import "./style.css";
 import NexLogo from "./Nexlogo";
 
 export default function Navbar() {
@@ -9,7 +9,6 @@ export default function Navbar() {
   return (
     <>
       <nav className="nexnav nexnav-root">
-
         {/* ── Logo ── */}
         <Link to="/" className="nexnav-logo">
           <div className="nexnav-logo-icon">
@@ -18,15 +17,21 @@ export default function Navbar() {
           </div>
           <div className="nexnav-wordmark">
             <span className="nexnav-name">NexInterview</span>
-            <span className="nexnav-tagline">AI-Powered</span>
+            <span className="nexnav-tagline">Live Coding Platform</span>{" "}
           </div>
         </Link>
 
         {/* ── Centre links ── */}
         <div className="nexnav-links">
-          <Link to="/practice" className="nexnav-link">Practice</Link>
-          <Link to="/sessions" className="nexnav-link">Sessions</Link>
-          <Link to="/pricing" className="nexnav-link">Pricing</Link>
+          <Link to="/practice" className="nexnav-link">
+            Practice
+          </Link>
+          <Link to="/sessions" className="nexnav-link">
+            Sessions
+          </Link>
+          <Link to="/pricing" className="nexnav-link">
+            Pricing
+          </Link>
         </div>
 
         {/* ── Right actions ── */}

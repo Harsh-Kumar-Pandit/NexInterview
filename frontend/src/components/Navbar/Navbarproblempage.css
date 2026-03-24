@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&display=swap');
+
+.pnav {
+  font-family: 'Sora', sans-serif;
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  background: rgba(8, 10, 20, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(129, 140, 248, 0.12);
+  box-shadow: 0 1px 40px rgba(0,0,0,0.4), 0 0 0 0.5px rgba(129,140,248,0.08);
+}
+
+/* top accent line */
+.pnav::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 15%; right: 15%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(129,140,248,0.5) 30%, rgba(167,139,250,0.5) 70%, transparent);
+}
+
+/* ── Logo ── */
+.pnav-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  user-select: none;
+}
+
+.pnav-logo-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.pnav-logo:hover .pnav-logo-icon {
+  transform: rotate(10deg) scale(1.05);
+}
+
+.pnav-logo-glow {
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(129,140,248,0.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.pnav-logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1;
+}
+
+.pnav-logo-name {
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #e0e7ff 20%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.pnav-logo-tagline {
+  font-size: 0.56rem;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(129, 140, 248, 0.6);
+  margin-top: 1px;
+}
+
+/* ── Centre links ── */
+.pnav-links {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.pnav-link {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(200, 210, 255, 0.55);
+  text-decoration: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  letter-spacing: 0.01em;
+  transition: color 0.2s, background 0.2s;
+}
+
+.pnav-link:hover {
+  color: rgba(224, 231, 255, 0.9);
+  background: rgba(129, 140, 248, 0.08);
+}
+
+/* ── Right actions ── */
+.pnav-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* BETA badge */
+.pnav-badge {
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(129,140,248,0.7);
+  background: rgba(129,140,248,0.08);
+  border: 1px solid rgba(129,140,248,0.18);
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+/* sep */
+.pnav-sep {
+  width: 1px;
+  height: 18px;
+  background: rgba(129,140,248,0.15);
+  margin: 0 2px;
+}
+
+/* Problems active pill */
+.pnav-btn--problems {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 18px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Sora', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  box-shadow: 0 0 0 1px rgba(99,102,241,0.3), 0 4px 16px rgba(99,102,241,0.3);
+  text-decoration: none;
+  transition: transform 0.15s, box-shadow 0.15s, filter 0.15s;
+  position: relative;
+  overflow: hidden;
+}
+
+.pnav-btn--problems::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 60%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent);
+  transition: left 0.5s;
+}
+
+.pnav-btn--problems:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 0 1px rgba(99,102,241,0.5), 0 6px 22px rgba(99,102,241,0.4);
+  filter: brightness(1.08);
+}
+
+.pnav-btn--problems:hover::before { left: 150%; }
+
+/* Dashboard ghost */
+.pnav-btn--dashboard {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  font-family: 'Sora', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: rgba(200,210,255,0.6);
+  background: rgba(129,140,248,0.06);
+  border: 1px solid rgba(129,140,248,0.15);
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s, background 0.2s;
+}
+
+.pnav-btn--dashboard:hover {
+  color: #e0e7ff;
+  border-color: rgba(129,140,248,0.35);
+  background: rgba(129,140,248,0.1);
+}
+
+/* Clerk user avatar */
+.pnav-user {
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive */
+@media (max-width: 640px) {
+  .pnav-links { display: none; }
+  .pnav-badge { display: none; }
+  .pnav { padding: 0 1.2rem; }
+}
+
+/* ── Active states ── */
+
+/* Centre links — active */
+.pnav-link--active {
+  color: rgba(224, 231, 255, 0.95) !important;
+  background: rgba(129, 140, 248, 0.12) !important;
+  position: relative;
+}
+
+/* underline indicator for active centre link */
+.pnav-link--active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 20%;
+  right: 20%;
+  height: 2px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #818cf8, #a78bfa);
+}
+
+/* Problems button — brighter when active */
+.pnav-btn--active {
+  box-shadow: 0 0 0 1px rgba(99,102,241,0.6), 0 6px 24px rgba(99,102,241,0.5) !important;
+  filter: brightness(1.12) !important;
+}
+
+/* Dashboard — active */
+.pnav-btn--dashboard-active {
+  color: #e0e7ff !important;
+  border-color: rgba(129,140,248,0.5) !important;
+  background: rgba(129,140,248,0.14) !important;
+  box-shadow: 0 0 10px rgba(129,140,248,0.12);
+}

@@ -4,6 +4,7 @@ import { useUser } from '@clerk/react'
 import { Toaster } from 'react-hot-toast';
 import ProblemPage from './pages/ProblemPage';
 import Dashboard from './pages/Dashboard';
+import DemoPage from './pages/Demopage';
 
 function App() {
 
@@ -17,7 +18,8 @@ function App() {
     <Routes>
       <Route path='/' element={!isSignedIn ? <HomePage/> : <Navigate to={"/dashboard"}/>}/>
       <Route path='/dashboard' element={isSignedIn ? <Dashboard/> : <Navigate to={'/'}/>}/>
-      <Route path='/problems' element={isSignedIn ? <ProblemPage/> : <Navigate to={'/'}/>}/>
+      <Route path='/problems' element={<ProblemPage/>}/>
+      <Route path='/demo' element={ <DemoPage/>}/>
     </Routes>
     <Toaster toastOptions={{duration: 2000}}/>
     </>

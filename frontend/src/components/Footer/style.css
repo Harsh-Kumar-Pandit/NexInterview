@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  background: #080A14;
+}
+.footer-link {
+  font-size: 0.8rem;
+  color: rgba(180,190,230,0.6);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.footer-link:hover {
+  color: #a78bfa;
+}

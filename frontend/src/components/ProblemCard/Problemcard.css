@@ -1,0 +1,285 @@
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@500&display=swap');
+
+/* ── Card ── */
+.pcard {
+  font-family: 'Sora', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.25rem;
+  padding: 1.25rem 1.5rem;
+  border-radius: 14px;
+  background: rgba(13, 15, 30, 0.7);
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  cursor: pointer;
+  transition: border-color 0.22s, background 0.22s, transform 0.22s, box-shadow 0.22s;
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* left accent bar */
+.pcard::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 15%; bottom: 15%;
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(180deg, #6366f1, #a78bfa);
+  opacity: 0;
+  transition: opacity 0.25s;
+}
+
+/* shimmer sweep */
+.pcard::before {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(99,102,241,0.04), transparent);
+  transition: left 0.5s ease;
+  pointer-events: none;
+}
+
+.pcard:hover {
+  border-color: rgba(99, 102, 241, 0.32);
+  background: rgba(13, 15, 30, 0.9);
+  transform: translateY(-2px);
+  box-shadow:
+    0 8px 32px rgba(99, 102, 241, 0.1),
+    0 0 0 1px rgba(99,102,241,0.06),
+    inset 0 1px 0 rgba(255,255,255,0.03);
+}
+
+.pcard:hover::after { opacity: 1; }
+.pcard:hover::before { left: 150%; }
+
+/* ── Row number ── */
+.pcard-num {
+  flex-shrink: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: rgba(99, 102, 241, 0.3);
+  width: 24px;
+  text-align: right;
+  user-select: none;
+}
+
+/* ── Left section ── */
+.pcard-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  min-width: 0;
+}
+
+/* code icon box */
+.pcard-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid rgba(99, 102, 241, 0.18);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.pcard:hover .pcard-icon {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: rgba(99, 102, 241, 0.38);
+  box-shadow: 0 0 14px rgba(99,102,241,0.16);
+}
+
+.pcard-body {
+  min-width: 0;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* title row */
+.pcard-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pcard-title {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #e0e7ff;
+  letter-spacing: -0.015em;
+  transition: color 0.2s;
+}
+
+.pcard:hover .pcard-title { color: #fff; }
+
+/* difficulty badge */
+.pcard-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 9px;
+  border-radius: 20px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  flex-shrink: 0;
+}
+
+.pcard-badge--easy {
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.08);
+  border: 1px solid rgba(52, 211, 153, 0.22);
+}
+
+.pcard-badge--medium {
+  color: #fbbf24;
+  background: rgba(251, 191, 36, 0.08);
+  border: 1px solid rgba(251, 191, 36, 0.22);
+}
+
+.pcard-badge--hard {
+  color: #f87171;
+  background: rgba(248, 113, 113, 0.08);
+  border: 1px solid rgba(248, 113, 113, 0.22);
+}
+
+/* meta row: tags + description inline */
+.pcard-meta {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+
+.pcard-tag-sep {
+  color: rgba(99, 102, 241, 0.2);
+  font-size: 0.65rem;
+}
+
+.pcard-meta-divider {
+  width: 3px; height: 3px;
+  border-radius: 50%;
+  background: rgba(99,102,241,0.2);
+  flex-shrink: 0;
+}
+
+
+/* ── Right — Solve button ── */
+.pcard-right {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* solved check icon */
+.pcard-solved-icon {
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: rgba(52,211,153,0.1);
+  border: 1px solid rgba(52,211,153,0.3);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.6rem;
+  color: #34d399;
+}
+
+.pcard-solve {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 7px 16px;
+  border-radius: 8px;
+  font-family: 'Sora', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(129, 140, 248, 0.6);
+  background: rgba(99, 102, 241, 0.06);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  white-space: nowrap;
+  transition: color 0.2s, background 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.pcard:hover .pcard-solve {
+  color: #e0e7ff;
+  background: rgba(99, 102, 241, 0.14);
+  border-color: rgba(99, 102, 241, 0.42);
+  box-shadow: 0 0 12px rgba(99,102,241,0.14);
+}
+
+.pcard-solve-arrow {
+  font-size: 0.75rem;
+  transition: transform 0.2s;
+}
+
+.pcard:hover .pcard-solve-arrow { transform: translateX(3px); }
+
+/* ── Solved state ── */
+.pcard--solved {
+  border-color: rgba(52, 211, 153, 0.12);
+}
+
+.pcard--solved::after {
+  background: linear-gradient(180deg, #34d399, #6ee7b7);
+}
+
+.pcard--solved:hover {
+  border-color: rgba(52, 211, 153, 0.3);
+  box-shadow: 0 8px 28px rgba(52,211,153,0.07), 0 0 0 1px rgba(52,211,153,0.05);
+}
+
+.pcard--solved .pcard-icon {
+  background: rgba(52, 211, 153, 0.08);
+  border-color: rgba(52, 211, 153, 0.22);
+}
+
+.pcard--solved .pcard-solve {
+  color: rgba(52, 211, 153, 0.65);
+  background: rgba(52, 211, 153, 0.06);
+  border-color: rgba(52, 211, 153, 0.18);
+}
+
+.pcard--solved:hover .pcard-solve {
+  color: #34d399;
+  background: rgba(52, 211, 153, 0.1);
+  border-color: rgba(52, 211, 153, 0.38);
+}
+/* TAGS */
+.pcard-tags {
+  display: flex;
+  gap: 6px;
+  margin-top: 2px;
+}
+
+.pcard-tag {
+  font-size: 0.65rem;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(99,102,241,0.08);
+  border: 1px solid rgba(99,102,241,0.18);
+  color: rgba(160,170,255,0.7);
+}
+
+/* DESCRIPTION */
+.pcard-desc {
+  margin-top: 4px;
+  font-size: 0.8rem;
+  color: rgba(180, 190, 230, 0.55);
+  line-height: 1.6;
+
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
