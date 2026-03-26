@@ -23,7 +23,7 @@ export default function Navbar() {
 
         {/* ── Centre links ── */}
         <div className="nexnav-links">
-          <Link to="/practice" className="nexnav-link">
+          <Link to="/problems" className="nexnav-link">
             Practice
           </Link>
           <Link to="/sessions" className="nexnav-link">

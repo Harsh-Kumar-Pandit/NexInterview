@@ -49,8 +49,8 @@ export default function NavbarProblemPage() {
 
       <div className="pnav-links">
         <Link
-          to="/practice"
-          className={`pnav-link ${isActive("/practice") ? "pnav-link--active" : ""}`}
+          to="/problems"
+          className={`pnav-link ${isActive("/problems") ? "pnav-link--active" : ""}`}
         >
           Practice
         </Link>
