@@ -10,12 +10,22 @@ const OutputPanel = ({ output, isRunning }) => {
       </div>
 
       <div className="min-h-0 flex-1 overflow-auto p-4">
-        <pre className="whitespace-pre-wrap break-words font-mono text-sm leading-6 text-slate-200">
-          {isRunning
-            ? "Running code..."
-            : output?.error || output?.output || "Run your code to see the output here."}
-        </pre>
-      </div>
+  <pre
+    className={`whitespace-pre-wrap break-words font-mono text-sm leading-6 ${
+      isRunning
+        ? "text-yellow-400"
+        : output?.error
+        ? "text-red-400"
+        : output?.output
+        ? "text-green-400"
+        : "text-slate-200"
+    }`}
+  >
+    {isRunning
+      ? "Running code..."
+      : output?.error || output?.output || "Run your code to see the output here."}
+  </pre>
+</div>
     </div>
   )
 }
