@@ -154,11 +154,6 @@ export default function DemoPage() {
           </div>
         </div>
 
-        <p className="demo-video-add-hint">
-          Replace the placeholder with your video —{" "}
-          <code>&lt;video src="..."&gt;</code> or a YouTube{" "}
-          <code>&lt;iframe&gt;</code>
-        </p>
       </div>
 
       <div className="demo-section">
