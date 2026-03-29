@@ -1,4 +1,4 @@
-const filters = ["All", "Easy", "Medium", "Hard"];
+ï»¿const filters = ["All", "Easy", "Medium", "Hard"];
 
 function FilterBar({ search, setSearch, filter, setFilter }) {
   return (
@@ -19,7 +19,7 @@ function FilterBar({ search, setSearch, filter, setFilter }) {
       <input
         value={search}
         onChange={(e) => setSearch(e.target.value)}
-        placeholder="Search sessions…"
+        placeholder="Search sessions..."
         style={{
           flex: "1 1 260px",
           minWidth: "220px",

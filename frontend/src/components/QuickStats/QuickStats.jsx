@@ -1,4 +1,4 @@
-function QuickStats({ recentSessionsCount }) {
+﻿function QuickStats({ recentSessionsCount }) {
   const items = [
     {
       label: "Interview Readiness",
