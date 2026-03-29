@@ -3,11 +3,12 @@ import { chatClient, streamClient } from "../lib/stream.js";
 
 export async function createSession(req, res) {
   try {
-    const { problem, difficulty } = req.body;
+    const rawProblem = req.body.problem;
+    const difficulty = req.body.difficulty;
     const userId = req.user._id;
     const clerkId = req.user.clerkId;
 
-    problem = problem?.trim();
+    const problem = rawProblem?.trim();
 
     if (!problem || !difficulty) {
       return res

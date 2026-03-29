@@ -1,11 +1,10 @@
-import { requireAuth } from "@clerk/express";
+import { getAuth } from "@clerk/express";
 import User from "../models/User.js"
 
 export const protectRoute = [
-    requireAuth(), //is user authenticated with the clerk
     async (req, res, next) => {
         try {
-            const clerkId = req.auth.userId;
+            const { userId: clerkId } = getAuth(req);
 
             if (!clerkId) return res.status(401).json({ message: "Unauthorized - invalid token"});
 
