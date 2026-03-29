@@ -18,7 +18,10 @@ function App() {
     <>
     <Routes>
       <Route path='/' element={!isSignedIn ? <HomePage/> : <Navigate to={"/dashboard"}/>}/>
-      <Route path='/dashboard' element={<Dashboard/>}/>
+      <Route
+        path='/dashboard'
+        element={isSignedIn ? <Dashboard/> : <Navigate to={"/"}/>}
+      />
       <Route path='/problems' element={<ProblemPage/>}/>
       <Route path='/problems/:id' element={<ProblemIdpage/>}/>
       <Route path='/demo' element={ <DemoPage/>}/>

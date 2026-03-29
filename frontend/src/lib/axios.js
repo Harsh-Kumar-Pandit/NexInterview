@@ -1,6 +1,14 @@
 import axios from "axios";
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+const API_BASE_URL = import.meta.env.VITE_API_URL?.trim();
+
+if (!API_BASE_URL) {
+    const message =
+        "Missing VITE_API_URL. Set frontend/.env VITE_API_URL to your backend API base URL before starting the app.";
+    console.error(message);
+    throw new Error(message);
+}
+
 let getClerkToken = null;
 
 export const setClerkTokenGetter = (tokenGetter) => {

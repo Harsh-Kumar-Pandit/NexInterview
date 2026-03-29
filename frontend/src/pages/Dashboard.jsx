@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useUser } from "@clerk/react";
 
@@ -122,13 +122,36 @@ const Dashboard = () => {
   const [roomConfig, setRoomConfig] = useState({ problem: "", difficulty: "" });
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("All");
+  const [isNarrowViewport, setIsNarrowViewport] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.innerWidth <= 600;
+  });
 
   const createSessionMutation = useCreateSession();
 
-  const { data: activeSessionsData, isLoading: loadingActiveSessions } =
-    useActiveSessions();
-  const { data: recentSessionsData, isLoading: loadingRecentSessions } =
-    useMyRecentSessions();
+  const {
+    data: activeSessionsData,
+    isLoading: loadingActiveSessions,
+    isError: isActiveSessionsError,
+  } = useActiveSessions();
+  const {
+    data: recentSessionsData,
+    isLoading: loadingRecentSessions,
+    isError: isRecentSessionsError,
+  } = useMyRecentSessions();
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsNarrowViewport(window.innerWidth <= 600);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleCreateRoom = () => {
     if (!roomConfig.problem || !roomConfig.difficulty) return;
@@ -146,18 +169,18 @@ const Dashboard = () => {
     );
   };
 
-  const activeSessions = activeSessionsData?.sessions || [];
-  const recentSessions = recentSessionsData?.sessions || [];
+  const activeSessions = activeSessionsData?.sessions ?? undefined;
+  const recentSessions = recentSessionsData?.sessions ?? undefined;
 
   const filteredSessions = activeSessions
-    .filter(
-      (s) =>
-        filter === "All" ||
-        s.difficulty?.toLowerCase() === filter.toLowerCase()
-    )
-    .filter((s) =>
-      s.problem?.toLowerCase().includes(search.toLowerCase())
-    );
+    ? activeSessions
+        .filter(
+          (s) =>
+            filter === "All" ||
+            s.difficulty?.toLowerCase() === filter.toLowerCase()
+        )
+        .filter((s) => s.problem?.toLowerCase().includes(search.toLowerCase()))
+    : undefined;
 
   const isUserInSession = (session) => {
     if (!user?.id) return false;
@@ -167,11 +190,29 @@ const Dashboard = () => {
     );
   };
 
+  const activeSessionsCount = activeSessions?.length ?? 0;
+  const recentSessionsCount = recentSessions?.length ?? 0;
+  const hasActiveSessionsLoaded = Array.isArray(activeSessions);
+  const hasRecentSessionsLoaded = Array.isArray(recentSessions);
+
   const showEmptyDashboard =
+    hasActiveSessionsLoaded &&
+    hasRecentSessionsLoaded &&
     activeSessions.length === 0 &&
     recentSessions.length === 0 &&
     !loadingActiveSessions &&
-    !loadingRecentSessions;
+    !loadingRecentSessions &&
+    !isActiveSessionsError &&
+    !isRecentSessionsError &&
+    !!activeSessionsData &&
+    !!recentSessionsData;
+
+  const responsiveGridStyle = {
+    ...S.grid,
+    gridTemplateColumns: isNarrowViewport ? "1fr" : S.grid.gridTemplateColumns,
+    gap: isNarrowViewport ? "16px" : S.grid.gap,
+    alignItems: isNarrowViewport ? "stretch" : S.grid.alignItems,
+  };
 
   return (
     <main style={S.page}>
@@ -182,7 +223,7 @@ const Dashboard = () => {
         <WelcomeSection onCreateSession={() => setShowCreateModal(true)} />
 
         <div style={S.inner}>
-          <QuickStats recentSessionsCount={recentSessions.length} />
+          <QuickStats recentSessionsCount={recentSessionsCount} />
 
           <div style={S.overviewBlock}>
             <p style={S.overviewLabel}>Dashboard Overview</p>
@@ -208,10 +249,10 @@ const Dashboard = () => {
             </div>
           ) : (
             <>
-              <div style={S.grid}>
+              <div style={responsiveGridStyle}>
                 <StatsCards
-                  activeSessionsCount={activeSessions.length}
-                  recentSessionsCount={recentSessions.length}
+                  activeSessionsCount={activeSessionsCount}
+                  recentSessionsCount={recentSessionsCount}
                 />
 
                 <div style={S.rightColumn}>
@@ -222,7 +263,7 @@ const Dashboard = () => {
                     setFilter={setFilter}
                   />
                   <ActiveSessions
-                    sessions={filteredSessions}
+                    sessions={filteredSessions ?? []}
                     isLoading={loadingActiveSessions}
                     isUserInSession={isUserInSession}
                   />
@@ -231,7 +272,7 @@ const Dashboard = () => {
 
               <div style={S.recentWrap}>
                 <RecentSessions
-                  sessions={recentSessions}
+                  sessions={recentSessions ?? []}
                   isLoading={loadingRecentSessions}
                 />
               </div>
