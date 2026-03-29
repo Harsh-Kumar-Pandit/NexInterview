@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import "./DemoPage.css";
+import NavbarProblemPage from "../components/Navbar/NavbarProblemPage";
 
 const FAQS = [
   {
@@ -84,8 +85,11 @@ const HIGHLIGHTS = [
 const STACK = [
   { label: "React", emoji: "⚛️" },
   { label: "Node.js", emoji: "🟢" },
-  { label: "WebRTC", emoji: "📡" },
-  { label: "Socket.io", emoji: "🔌" },
+    { label: "CodeRabbit", emoji: "🐰" },
+  { label: "Stream", emoji: "📹" },
+  { label: "Inngest", emoji: "⚙️" },
+  { label: "Sevalla", emoji: "🚀" },
+  { label: "Clerk", emoji: "🔐" },
   { label: "Monaco Editor", emoji: "📝" },
   { label: "Clerk Auth", emoji: "🔑" },
   { label: "MongoDb", emoji: "🐘" },
@@ -118,11 +122,11 @@ export default function DemoPage() {
   return (
     <div className="demo-page">
       <div className="demo-bg-grid" />
+      <NavbarProblemPage/>
 
       <div className="demo-hero">
         <div className="demo-hero-eyebrow">
-          <span className="demo-hero-dot" />
-          Product Demo
+          <span className="demo-hero-dot"/>
         </div>
         <h1 className="demo-hero-title">
           See <span className="demo-hero-grad">NexInterview</span>

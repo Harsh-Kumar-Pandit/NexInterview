@@ -7,8 +7,8 @@ export async function getStreamToken(req, res) {
         res.status(200).json({
             token, 
             userId: req.user.clerkId,
-            userNmae: req.user.name,
-            userImage: req.uer.image,
+            userName: req.user.name,
+            userImage: req.user.image,
         })
     } catch (error) {
         console.log("Error in getStreamToken contoller:", error.message);

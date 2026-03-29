@@ -55,16 +55,16 @@ export default function NavbarProblemPage() {
           Practice
         </Link>
         <Link
-          to="/sessions"
-          className={`pnav-link ${isActive("/sessions") ? "pnav-link--active" : ""}`}
+          to="/dashboard"
+          className={`pnav-link ${isActive("/dashboard") ? "pnav-link--active" : ""}`}
         >
           Sessions
         </Link>
         <Link
-          to="/pricing"
-          className={`pnav-link ${isActive("/pricing") ? "pnav-link--active" : ""}`}
+          to="/demo"
+          className={`pnav-link ${isActive("/demo") ? "pnav-link--active" : ""}`}
         >
-          Pricing
+        Demo
         </Link>
       </div>
 
