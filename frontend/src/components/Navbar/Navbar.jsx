@@ -26,11 +26,11 @@ export default function Navbar() {
           <Link to="/problems" className="nexnav-link">
             Practice
           </Link>
-          <Link to="/sessions" className="nexnav-link">
+          <Link to="/dashboard" className="nexnav-link">
             Sessions
           </Link>
-          <Link to="/pricing" className="nexnav-link">
-            Pricing
+          <Link to="/demo" className="nexnav-link">
+            Demo
           </Link>
         </div>
 

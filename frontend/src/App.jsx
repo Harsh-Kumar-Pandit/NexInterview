@@ -21,7 +21,7 @@ function App() {
       <Route path='/' element={!isSignedIn ? <HomePage/> : <Navigate to={"/dashboard"}/>}/>
       <Route
         path='/dashboard'
-        element={isSignedIn ? <Dashboard/> : <Navigate to={"/"}/>}
+        element={isSignedIn ? <Dashboard/> : <RedirectToSignIn />}
       />
       <Route path='/problems' element={<ProblemPage/>}/>
       <Route
