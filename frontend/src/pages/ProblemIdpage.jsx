@@ -9,6 +9,8 @@ import { PanelGroup, Panel, PanelResizeHandle } from "react-resizable-panels";
 import toast from "react-hot-toast";
 import { executeCode } from "../lib/piston";
 import confetti from "canvas-confetti";
+import { reviewCode } from "../api/ai";
+import CodeAnalyse from "../components/CodeAnalyse/CodeAnalyse";
 
 const ProblemIdpage = () => {
   const { id } = useParams();
@@ -21,6 +23,9 @@ const ProblemIdpage = () => {
   );
   const [output, setOutput] = useState(null);
   const [isRunning, setIsRunning] = useState(false);
+  const [showAiReview, setShowAiReview] = useState(false);
+const [aiReview, setAiReview] = useState(null);
+const [isAnalyzing, setIsAnalyzing] = useState(false);
 
   const currentProblem = PROBLEMS[currentProblemId];
 
@@ -79,8 +84,29 @@ const ProblemIdpage = () => {
     setIsRunning(false); // IMPORTANT
   }
   }
+  const handleAnalyzeCode = async () => {
+  try {
+    setIsAnalyzing(true);
 
-  const triggerConfetti = () => {
+    const res = await reviewCode({
+      code,
+      language: selectedLanguage,
+      problemTitle: currentProblem.title,
+      description: currentProblem.description.text
+    });
+
+    setAiReview(res.review);
+    setShowAiReview(true);
+
+  } catch (error) {
+ console.error(error);
+ console.error(error.response?.data);
+ toast.error(error.response?.data?.message || "AI analysis failed");
+} finally {
+    setIsAnalyzing(false);
+  }
+};
+const triggerConfetti = () => {
     confetti({
       particleCount: 80,
       spread: 250,
@@ -137,12 +163,20 @@ const ProblemIdpage = () => {
         <PanelGroup direction="horizontal" className="h-full min-h-0 w-full">
           {/* LEFT PANEL */}
           <Panel defaultSize={40} minSize={30} className="min-h-0 overflow-hidden">
-            <ProblemDescriptionPanel
-              problem={currentProblem}
-              currentProblemId={currentProblemId}
-              onProblemChange={handelProblemChange}
-              allProblems={Object.values(PROBLEMS)}
-            />
+            {showAiReview ? (
+  <CodeAnalyse
+    review={aiReview}
+    onClose={() => setShowAiReview(false)}
+    problem={currentProblem}
+  />
+) : (
+  <ProblemDescriptionPanel
+    problem={currentProblem}
+    currentProblemId={currentProblemId}
+    onProblemChange={handelProblemChange}
+    allProblems={Object.values(PROBLEMS)}
+  />
+)}
           </Panel>
 
           <PanelResizeHandle className="w-2 bg-base-300 hover:bg-primary cursor-col-resize" />
@@ -166,6 +200,8 @@ const ProblemIdpage = () => {
   selectedLanguage={selectedLanguage}
   onLanguageChange={handleLanguageChange}
   onRunCode={handleRunCode}
+  onAnalyzeCode={handleAnalyzeCode}
+isAnalyzing={isAnalyzing}
 />
                 </div>
               </Panel>

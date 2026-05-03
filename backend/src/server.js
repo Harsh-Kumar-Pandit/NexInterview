@@ -9,6 +9,7 @@ import { clerkMiddleware } from "@clerk/express";
 import chatRoutes from "./routes/chatRoutes.js"
 import sessionRoutes from "./routes/sessionRoutes.js"
 import codeExecutionRoutes from "./routes/codeExecutionRoutes.js";
+import aiRoutes from "./routes/aiRoutes.js";
 
 const app = express();
 const Port = ENV.PORT;
@@ -27,6 +28,7 @@ app.use("/api/inngest", serve({ client: inngest, functions}))
 app.use("/api/chat", chatRoutes);
 app.use("/api/session", sessionRoutes);
 app.use("/api/code", codeExecutionRoutes);
+app.use("/api/ai", aiRoutes);
 
 app.get("/health", (req, res) => {
   res.status(200).json({ msg: "api is up and running" });

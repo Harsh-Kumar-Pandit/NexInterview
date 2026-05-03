@@ -10,6 +10,8 @@ const CodeEditor = ({
   onCodeChange,
   onLanguageChange,
   onRunCode,
+  isAnalyzing,
+  onAnalyzeCode,
 }) => {
   return (
     <div className="h-full bg-[#0d0f1e] flex flex-col">
@@ -35,6 +37,63 @@ const CodeEditor = ({
             ))}
           </select>
         </div>
+<button
+  onClick={onAnalyzeCode}
+  disabled={isAnalyzing}
+  style={{
+    display: "flex",
+    alignItems: "center",
+    gap: 6,
+    padding: "7px 14px",
+    borderRadius: 8,
+    border: "1px solid rgba(139,92,246,0.4)",
+    background: isAnalyzing 
+      ? "rgba(139,92,246,0.1)" 
+      : "rgba(139,92,246,0.15)",
+    color: isAnalyzing ? "#7c6faa" : "#a78bfa",
+    fontSize: 13,
+    fontWeight: 500,
+    cursor: isAnalyzing ? "not-allowed" : "pointer",
+    transition: "all 0.2s",
+    whiteSpace: "nowrap",
+    opacity: isAnalyzing ? 0.7 : 1,
+  }}
+  onMouseEnter={e => {
+    if (!isAnalyzing) {
+      e.currentTarget.style.background = "rgba(139,92,246,0.25)";
+      e.currentTarget.style.borderColor = "rgba(139,92,246,0.6)";
+    }
+  }}
+  onMouseLeave={e => {
+    e.currentTarget.style.background = "rgba(139,92,246,0.15)";
+    e.currentTarget.style.borderColor = "rgba(139,92,246,0.4)";
+  }}
+>
+  {isAnalyzing ? (
+    <>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+        style={{ animation: "spin 1s linear infinite" }}>
+        <circle cx="12" cy="12" r="10" stroke="currentColor" 
+          strokeWidth="3" strokeDasharray="40" strokeDashoffset="10"/>
+      </svg>
+      Analyzing...
+    </>
+  ) : (
+    <>
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+        <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+      </svg>
+      AI Analyze
+    </>
+  )}
+
+  <style>{`
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+  `}</style>
+</button>
 
         <button
           className="flex items-center gap-2 px-3 py-1.5 bg-indigo-600 text-white rounded text-sm disabled:opacity-50"
