@@ -198,7 +198,6 @@ Interviewer joins room
 
 ## 🗺️ Roadmap
 
-- [ ] Authentication & user accounts
 - [ ] Interview recording & playback
 - [ ] Question bank with difficulty levels
 - [ ] Whiteboard mode
