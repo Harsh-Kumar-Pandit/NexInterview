@@ -12,6 +12,7 @@ const CodeEditor = ({
   onRunCode,
   isAnalyzing,
   onAnalyzeCode,
+  showAnalyzeButton,
 }) => {
   return (
     <div className="h-full bg-[#0d0f1e] flex flex-col">
@@ -37,6 +38,7 @@ const CodeEditor = ({
             ))}
           </select>
         </div>
+        {showAnalyzeButton && (
 <button
   onClick={onAnalyzeCode}
   disabled={isAnalyzing}
@@ -93,7 +95,7 @@ const CodeEditor = ({
       to { transform: rotate(360deg); }
     }
   `}</style>
-</button>
+</button>)}
 
         <button
           className="flex items-center gap-2 px-3 py-1.5 bg-indigo-600 text-white rounded text-sm disabled:opacity-50"

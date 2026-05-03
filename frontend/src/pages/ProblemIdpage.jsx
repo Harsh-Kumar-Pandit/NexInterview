@@ -202,6 +202,7 @@ const triggerConfetti = () => {
   onRunCode={handleRunCode}
   onAnalyzeCode={handleAnalyzeCode}
 isAnalyzing={isAnalyzing}
+ showAnalyzeButton={true}
 />
                 </div>
               </Panel>

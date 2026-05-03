@@ -275,6 +275,7 @@ function SessionPage() {
                       onLanguageChange={handleLanguageChange}
                       onCodeChange={(value) => setCode(value)}
                       onRunCode={handleRunCode}
+                      showAnalyzeButton={false}
                     />
                   </Panel>
 
