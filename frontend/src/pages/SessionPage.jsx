@@ -95,6 +95,13 @@ function SessionPage() {
     setIsRunning(false);
   };
 
+  const handleResetCode = () => {
+    if (problemData?.starterCode?.[selectedLanguage]) {
+      setCode(problemData.starterCode[selectedLanguage]);
+      setOutput(null);
+    }
+  };
+
   const handleEndSession = () => {
     if (
       confirm(
@@ -276,6 +283,7 @@ function SessionPage() {
                       onCodeChange={(value) => setCode(value)}
                       onRunCode={handleRunCode}
                       showAnalyzeButton={false}
+                      onResetCode={handleResetCode}  
                     />
                   </Panel>
 

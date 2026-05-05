@@ -38,6 +38,11 @@ export const PROBLEMS = {
   
 }
 
+/*
+Sample test cases (for understanding output)
+Write logic only inside the function.
+Do not remove these examples.
+*/
 // Test cases
 console.log(twoSum([2, 7, 11, 15], 9)); // Expected: [0, 1]
 console.log(twoSum([3, 2, 4], 6)); // Expected: [1, 2]
@@ -46,13 +51,19 @@ console.log(twoSum([3, 3], 6)); // Expected: [0, 1]`,
     # Write your solution here
     pass
 
+
+       """
+Sample test cases (for understanding output)
+Write logic only inside the function.
+Do not remove these examples.
+"""
 # Test cases
 print(twoSum([2, 7, 11, 15], 9))  # Expected: [0, 1]
 print(twoSum([3, 2, 4], 6))  # Expected: [1, 2]
 print(twoSum([3, 3], 6))  # Expected: [0, 1]`,
       java: `import java.util.*;
 
-class Solution {
+class Main {
     public static int[] twoSum(int[] nums, int target) {
         // Write your solution here
         
@@ -60,6 +71,14 @@ class Solution {
     }
     
     public static void main(String[] args) {
+
+
+
+       /*
+Sample test cases (for understanding output)
+Write logic only inside the function.
+Do not remove these examples.
+*/
         System.out.println(Arrays.toString(twoSum(new int[]{2, 7, 11, 15}, 9))); // Expected: [0, 1]
         System.out.println(Arrays.toString(twoSum(new int[]{3, 2, 4}, 6))); // Expected: [1, 2]
         System.out.println(Arrays.toString(twoSum(new int[]{3, 3}, 6))); // Expected: [0, 1]
@@ -96,21 +115,31 @@ class Solution {
     starterCode: {
       javascript: `function reverseString(s) {
   // Write your solution here
-  
 }
 
+      /*
+Sample test cases (for understanding output)
+Write logic only inside the function.
+Do not remove these examples.
+*/
 // Test cases
 let test1 = ["h","e","l","l","o"];
 reverseString(test1);
-console.log(test1); // Expected: ["o","l","l","e","h"]
+console.log(test1.join(","));
 
 let test2 = ["H","a","n","n","a","h"];
 reverseString(test2);
-console.log(test2); // Expected: ["h","a","n","n","a","H"]`,
+console.log(test2.join(","));`,
       python: `def reverseString(s):
     # Write your solution here
     pass
 
+
+       """
+Sample test cases (for understanding output)
+Write logic only inside the function.
+Do not remove these examples.
+"""
 # Test cases
 test1 = ["h","e","l","l","o"]
 reverseString(test1)
@@ -121,13 +150,21 @@ reverseString(test2)
 print(test2)  # Expected: ["h","a","n","n","a","H"]`,
       java: `import java.util.*;
 
-class Solution {
+class Main {
     public static void reverseString(char[] s) {
         // Write your solution here
         
     }
     
     public static void main(String[] args) {
+
+
+
+          /*
+Sample test cases (for understanding output)
+Write logic only inside the function.
+Do not remove these examples.
+*/
         char[] test1 = {'h','e','l','l','o'};
         reverseString(test1);
         System.out.println(Arrays.toString(test1)); // Expected: [o, l, l, e, h]
@@ -139,7 +176,7 @@ class Solution {
 }`,
     },
     expectedOutput: {
-      javascript: '["o","l","l","e","h"]\n["h","a","n","n","a","H"]',
+      javascript: "o,l,l,e,h\nh,a,n,n,a,H",
       python: "['o', 'l', 'l', 'e', 'h']\n['h', 'a', 'n', 'n', 'a', 'H']",
       java: "[o, l, l, e, h]\n[h, a, n, n, a, H]",
     },
@@ -179,6 +216,11 @@ class Solution {
   
 }
 
+/*
+Sample test cases (for understanding output)
+Write logic only inside the function.
+Do not remove these examples.
+*/
 // Test cases
 console.log(isPalindrome("A man, a plan, a canal: Panama")); // Expected: true
 console.log(isPalindrome("race a car")); // Expected: false
@@ -187,11 +229,17 @@ console.log(isPalindrome(" ")); // Expected: true`,
     # Write your solution here
     pass
 
+
+       """
+Sample test cases (for understanding output)
+Write logic only inside the function.
+Do not remove these examples.
+"""
 # Test cases
 print(isPalindrome("A man, a plan, a canal: Panama"))  # Expected: True
 print(isPalindrome("race a car"))  # Expected: False
 print(isPalindrome(" "))  # Expected: True`,
-      java: `class Solution {
+      java: `class Main {
     public static boolean isPalindrome(String s) {
         // Write your solution here
         
@@ -199,6 +247,14 @@ print(isPalindrome(" "))  # Expected: True`,
     }
     
     public static void main(String[] args) {
+
+
+
+          /*
+Sample test cases (for understanding output)
+Write logic only inside the function.
+Do not remove these examples.
+*/
         System.out.println(isPalindrome("A man, a plan, a canal: Panama")); // Expected: true
         System.out.println(isPalindrome("race a car")); // Expected: false
         System.out.println(isPalindrome(" ")); // Expected: true
@@ -245,6 +301,11 @@ print(isPalindrome(" "))  # Expected: True`,
   
 }
 
+/*
+Sample test cases (for understanding output)
+Write logic only inside the function.
+Do not remove these examples.
+*/
 // Test cases
 console.log(maxSubArray([-2,1,-3,4,-1,2,1,-5,4])); // Expected: 6
 console.log(maxSubArray([1])); // Expected: 1
@@ -253,11 +314,17 @@ console.log(maxSubArray([5,4,-1,7,8])); // Expected: 23`,
     # Write your solution here
     pass
 
+
+       """
+Sample test cases (for understanding output)
+Write logic only inside the function.
+Do not remove these examples.
+"""
 # Test cases
 print(maxSubArray([-2,1,-3,4,-1,2,1,-5,4]))  # Expected: 6
 print(maxSubArray([1]))  # Expected: 1
 print(maxSubArray([5,4,-1,7,8]))  # Expected: 23`,
-      java: `class Solution {
+      java: `class Main {
     public static int maxSubArray(int[] nums) {
         // Write your solution here
         
@@ -265,6 +332,13 @@ print(maxSubArray([5,4,-1,7,8]))  # Expected: 23`,
     }
     
     public static void main(String[] args) {
+
+
+          /*
+Sample test cases (for understanding output)
+Write logic only inside the function.
+Do not remove these examples.
+*/
         System.out.println(maxSubArray(new int[]{-2,1,-3,4,-1,2,1,-5,4})); // Expected: 6
         System.out.println(maxSubArray(new int[]{1})); // Expected: 1
         System.out.println(maxSubArray(new int[]{5,4,-1,7,8})); // Expected: 23
@@ -277,7 +351,7 @@ print(maxSubArray([5,4,-1,7,8]))  # Expected: 23`,
       java: "6\n1\n23",
     },
   },
-  "best-time-to-buy-sell-stock": {
+"best-time-to-buy-sell-stock": {
   id: "best-time-to-buy-sell-stock",
   title: "Best Time to Buy and Sell Stock",
   difficulty: "Easy",
@@ -305,14 +379,45 @@ print(maxSubArray([5,4,-1,7,8]))  # Expected: 23`,
   
 }
 
-console.log(maxProfit([7,1,5,3,6,4])); // Expected: 5`,
+/*
+Sample test cases (for understanding output)
+Write logic only inside the function.
+Do not remove these examples.
+*/
+// Test cases
+console.log(maxProfit([7,1,5,3,6,4])); // Expected: 5
+console.log(maxProfit([7,6,4,3,1]));   // Expected: 0`,
+
     python: `def maxProfit(prices):
     pass
 
-print(maxProfit([7,1,5,3,6,4]))  # Expected: 5`,
-    java: `class Solution {
+
+       """
+Sample test cases (for understanding output)
+Write logic only inside the function.
+Do not remove these examples.
+"""
+# Test cases
+print(maxProfit([7,1,5,3,6,4]))  # Expected: 5
+print(maxProfit([7,6,4,3,1]))    # Expected: 0`,
+
+    java: `class Main {
     public static int maxProfit(int[] prices) {
         return 0;
+    }
+
+    public static void main(String[] args) {
+
+
+
+
+          /*
+Sample test cases (for understanding output)
+Write logic only inside the function.
+Do not remove these examples.
+*/
+        System.out.println(maxProfit(new int[]{7,1,5,3,6,4})); // Expected: 5
+        System.out.println(maxProfit(new int[]{7,6,4,3,1}));   // Expected: 0
     }
 }`,
   },
@@ -348,14 +453,45 @@ print(maxProfit([7,1,5,3,6,4]))  # Expected: 5`,
   
 }
 
-console.log(containsDuplicate([1,2,3,1])); // true`,
+/*
+Sample test cases (for understanding output)
+Write logic only inside the function.
+Do not remove these examples.
+*/
+// Test cases
+console.log(containsDuplicate([1,2,3,1])); // true
+console.log(containsDuplicate([1,2,3,4])); // false`,
+
     python: `def containsDuplicate(nums):
     pass
 
-print(containsDuplicate([1,2,3,1]))`,
-    java: `class Solution {
+
+       """
+Sample test cases (for understanding output)
+Write logic only inside the function.
+Do not remove these examples.
+"""
+# Test cases
+print(containsDuplicate([1,2,3,1]))  # True
+print(containsDuplicate([1,2,3,4]))  # False`,
+
+    java: `class Main {
     public static boolean containsDuplicate(int[] nums) {
         return false;
+    }
+
+    public static void main(String[] args) {
+
+
+
+
+          /*
+Sample test cases (for understanding output)
+Write logic only inside the function.
+Do not remove these examples.
+*/
+        System.out.println(containsDuplicate(new int[]{1,2,3,1})); // true
+        System.out.println(containsDuplicate(new int[]{1,2,3,4})); // false
     }
 }`,
   },
@@ -398,6 +534,11 @@ print(containsDuplicate([1,2,3,1]))`,
   
 }
 
+/*
+Sample test cases (for understanding output)
+Write logic only inside the function.
+Do not remove these examples.
+*/
 // Test cases
 console.log(maxArea([1,8,6,2,5,4,8,3,7])); // Expected: 49
 console.log(maxArea([1,1])); // Expected: 1`,
@@ -405,10 +546,15 @@ console.log(maxArea([1,1])); // Expected: 1`,
     # Write your solution here
     pass
 
+   """
+Sample test cases (for understanding output)
+Write logic only inside the function.
+Do not remove these examples.
+"""
 # Test cases
 print(maxArea([1,8,6,2,5,4,8,3,7]))  # Expected: 49
 print(maxArea([1,1]))  # Expected: 1`,
-      java: `class Solution {
+      java: `class Main {
     public static int maxArea(int[] height) {
         // Write your solution here
         
@@ -416,6 +562,13 @@ print(maxArea([1,1]))  # Expected: 1`,
     }
     
     public static void main(String[] args) {
+
+
+    /*
+Sample test cases (for understanding output)
+Write logic only inside the function.
+Do not remove these examples.
+*/
         System.out.println(maxArea(new int[]{1,8,6,2,5,4,8,3,7})); // Expected: 49
         System.out.println(maxArea(new int[]{1,1})); // Expected: 1
     }

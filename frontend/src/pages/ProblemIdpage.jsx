@@ -48,6 +48,13 @@ const [isAnalyzing, setIsAnalyzing] = useState(false);
     setCode(currentProblem.starterCode[newLamg])
     setOutput(null)
   }
+  
+
+  const handleResetCode = () => {
+  const starter = currentProblem.starterCode[selectedLanguage];
+  setCode(starter);
+  setOutput(null);
+};
 
   const handleRunCode = async () => {
   setIsRunning(true);
@@ -203,6 +210,7 @@ const triggerConfetti = () => {
   onAnalyzeCode={handleAnalyzeCode}
 isAnalyzing={isAnalyzing}
  showAnalyzeButton={true}
+ onResetCode={handleResetCode} 
 />
                 </div>
               </Panel>

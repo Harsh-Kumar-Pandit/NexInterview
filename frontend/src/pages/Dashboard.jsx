@@ -17,102 +17,7 @@ import NavbarProblemPage from "../components/Navbar/NavbarProblemPage";
 import QuickStats from "../components/QuickStats/QuickStats";
 import FilterBar from "../components/FilterBar/FilterBar";
 
-const S = {
-  page: {
-    minHeight: "100vh",
-    background: "#060814",
-    color: "#f1f5f9",
-    fontFamily: "'Outfit', sans-serif",
-  },
-  ambient: {
-    pointerEvents: "none",
-    position: "fixed",
-    inset: 0,
-    zIndex: 0,
-    background:
-      "radial-gradient(circle at top left, rgba(99,102,241,0.10) 0%, transparent 28%), radial-gradient(circle at top right, rgba(14,165,233,0.08) 0%, transparent 24%)",
-  },
-  pageBody: {
-    position: "relative",
-    zIndex: 10,
-    paddingTop: "64px",
-  },
-  inner: {
-    maxWidth: "1220px",
-    margin: "0 auto",
-    padding: "20px 24px 64px",
-  },
-  overviewBlock: {
-    marginTop: "22px",
-  },
-  overviewLabel: {
-    fontSize: "10px",
-    fontWeight: 700,
-    letterSpacing: "0.2em",
-    textTransform: "uppercase",
-    color: "#475569",
-    margin: 0,
-  },
-  overviewTitle: {
-    marginTop: "8px",
-    marginBottom: 0,
-    fontFamily: "'Sora', sans-serif",
-    fontSize: "clamp(1.4rem, 3vw, 1.85rem)",
-    fontWeight: 600,
-    letterSpacing: "-0.04em",
-    color: "#f1f5f9",
-    lineHeight: 1.25,
-  },
-  grid: {
-    marginTop: "28px",
-    display: "grid",
-    gridTemplateColumns: "280px minmax(0, 1fr)",
-    gap: "20px",
-    alignItems: "start",
-  },
-  rightColumn: {
-    display: "flex",
-    flexDirection: "column",
-  },
-  recentWrap: {
-    marginTop: "20px",
-  },
-  emptyState: {
-    textAlign: "center",
-    padding: "60px 24px",
-    marginTop: "28px",
-    background: "#0d111d",
-    border: "1px solid rgba(255,255,255,0.10)",
-    boxShadow: "0 16px 40px rgba(0,0,0,0.18)",
-  },
-  emptyIcon: {
-    fontSize: "32px",
-    marginBottom: "12px",
-  },
-  emptyTitle: {
-    color: "#f1f5f9",
-    fontWeight: 700,
-    fontSize: "18px",
-    margin: 0,
-  },
-  emptyText: {
-    color: "#64748b",
-    marginTop: "8px",
-    marginBottom: 0,
-    fontSize: "14px",
-  },
-  emptyButton: {
-    marginTop: "24px",
-    padding: "11px 28px",
-    background: "linear-gradient(135deg,#6366f1,#8b5cf6)",
-    border: "1px solid rgba(129,140,248,0.35)",
-    color: "#fff",
-    fontWeight: 700,
-    fontSize: "14px",
-    cursor: "pointer",
-    letterSpacing: "0.01em",
-  },
-};
+import "./Dashboard.css";
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -122,10 +27,9 @@ const Dashboard = () => {
   const [roomConfig, setRoomConfig] = useState({ problem: "", difficulty: "" });
   const [search, setSearch] = useState("");
   const [filter, setFilter] = useState("All");
-  const [isNarrowViewport, setIsNarrowViewport] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return window.innerWidth <= 600;
-  });
+  const [isNarrow, setIsNarrow] = useState(
+    typeof window !== "undefined" ? window.innerWidth <= 600 : false
+  );
 
   const createSessionMutation = useCreateSession();
 
@@ -134,6 +38,7 @@ const Dashboard = () => {
     isLoading: loadingActiveSessions,
     isError: isActiveSessionsError,
   } = useActiveSessions();
+
   const {
     data: recentSessionsData,
     isLoading: loadingRecentSessions,
@@ -141,16 +46,10 @@ const Dashboard = () => {
   } = useMyRecentSessions();
 
   useEffect(() => {
-    const handleResize = () => {
-      setIsNarrowViewport(window.innerWidth <= 600);
-    };
-
-    handleResize();
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
+    const onResize = () => setIsNarrow(window.innerWidth <= 600);
+    onResize();
+    window.addEventListener("resize", onResize);
+    return () => window.removeEventListener("resize", onResize);
   }, []);
 
   const handleCreateRoom = () => {
@@ -169,35 +68,28 @@ const Dashboard = () => {
     );
   };
 
-  const activeSessions = activeSessionsData?.sessions ?? undefined;
-  const recentSessions = recentSessionsData?.sessions ?? undefined;
+  const activeSessions  = activeSessionsData?.sessions  ?? undefined;
+  const recentSessions  = recentSessionsData?.sessions  ?? undefined;
 
   const filteredSessions = activeSessions
     ? activeSessions
-        .filter(
-          (s) =>
-            filter === "All" ||
-            s.difficulty?.toLowerCase() === filter.toLowerCase()
-        )
+        .filter((s) => filter === "All" || s.difficulty?.toLowerCase() === filter.toLowerCase())
         .filter((s) => s.problem?.toLowerCase().includes(search.toLowerCase()))
     : undefined;
 
   const isUserInSession = (session) => {
     if (!user?.id) return false;
-    return (
-      session.host?.clerkId === user.id ||
-      session.participant?.clerkId === user.id
-    );
+    return session.host?.clerkId === user.id || session.participant?.clerkId === user.id;
   };
 
-  const activeSessionsCount = activeSessions?.length ?? 0;
-  const recentSessionsCount = recentSessions?.length ?? 0;
-  const hasActiveSessionsLoaded = Array.isArray(activeSessions);
-  const hasRecentSessionsLoaded = Array.isArray(recentSessions);
+  const activeSessionsCount  = activeSessions?.length  ?? 0;
+  const recentSessionsCount  = recentSessions?.length  ?? 0;
+  const hasActiveLoaded      = Array.isArray(activeSessions);
+  const hasRecentLoaded      = Array.isArray(recentSessions);
 
-  const showEmptyDashboard =
-    hasActiveSessionsLoaded &&
-    hasRecentSessionsLoaded &&
+  const showEmpty =
+    hasActiveLoaded &&
+    hasRecentLoaded &&
     activeSessions.length === 0 &&
     recentSessions.length === 0 &&
     !loadingActiveSessions &&
@@ -207,55 +99,51 @@ const Dashboard = () => {
     !!activeSessionsData &&
     !!recentSessionsData;
 
-  const responsiveGridStyle = {
-    ...S.grid,
-    gridTemplateColumns: isNarrowViewport ? "1fr" : S.grid.gridTemplateColumns,
-    gap: isNarrowViewport ? "16px" : S.grid.gap,
-    alignItems: isNarrowViewport ? "stretch" : S.grid.alignItems,
-  };
-
   return (
-    <main style={S.page}>
+    <main className="dash-page">
       <NavbarProblemPage />
-      <div style={S.ambient} />
+      <div className="dash-ambient" />
 
-      <div style={S.pageBody}>
+      <div className="dash-body">
         <WelcomeSection onCreateSession={() => setShowCreateModal(true)} />
 
-        <div style={S.inner}>
+        <div className="dash-inner">
           <QuickStats recentSessionsCount={recentSessionsCount} />
 
-          <div style={S.overviewBlock}>
-            <p style={S.overviewLabel}>Dashboard Overview</p>
-            <h2 style={S.overviewTitle}>
+          {/* Overview heading */}
+          <div className="dash-overview">
+            <p className="dash-overview-label">Dashboard Overview</p>
+            <h2 className="dash-overview-title">
               Practice rooms, progress, and past sessions for{" "}
-              <span style={{ color: "#a5b4fc" }}>{user?.firstName || "you"}</span>.
+              <span className="dash-name">{user?.firstName || "you"}</span>.
             </h2>
           </div>
 
-          {showEmptyDashboard ? (
-            <div style={S.emptyState}>
-              <p style={S.emptyIcon}>{"\u{1F3AF}"}</p>
-              <h3 style={S.emptyTitle}>No sessions yet</h3>
-              <p style={S.emptyText}>
+          {showEmpty ? (
+            /* ── Empty state ── */
+            <div className="dash-empty">
+              <p className="dash-empty-icon">🎯</p>
+              <h3 className="dash-empty-title">No sessions yet</h3>
+              <p className="dash-empty-text">
                 Create your first interview session to get started.
               </p>
               <button
+                className="dash-empty-btn"
                 onClick={() => setShowCreateModal(true)}
-                style={S.emptyButton}
               >
-                {"\u26A1"} Create First Session
+                ⚡ Create First Session
               </button>
             </div>
           ) : (
             <>
-              <div style={responsiveGridStyle}>
+              {/* ── Main grid ── */}
+              <div className={`dash-grid${isNarrow ? " dash-grid--narrow" : ""}`}>
                 <StatsCards
                   activeSessionsCount={activeSessionsCount}
                   recentSessionsCount={recentSessionsCount}
                 />
 
-                <div style={S.rightColumn}>
+                <div className="dash-right">
                   <FilterBar
                     search={search}
                     setSearch={setSearch}
@@ -270,7 +158,8 @@ const Dashboard = () => {
                 </div>
               </div>
 
-              <div style={S.recentWrap}>
+              {/* ── Recent sessions ── */}
+              <div className="dash-recent-wrap">
                 <RecentSessions
                   sessions={recentSessions ?? []}
                   isLoading={loadingRecentSessions}

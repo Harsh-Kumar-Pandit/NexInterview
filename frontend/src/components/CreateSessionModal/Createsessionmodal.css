@@ -1,0 +1,281 @@
+/* ============================================================
+   CreateSessionModal.css — NexInterview
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap');
+
+/* ── Overlay ── */
+.csm-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(0, 0, 0, 0.72);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.csm-backdrop {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+}
+
+/* ── Modal Card ── */
+.csm-modal {
+  position: relative;
+  width: 100%;
+  max-width: 560px;
+  background: #0b1220;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.7),
+    0 0 0 1px rgba(99, 102, 241, 0.08);
+}
+
+.csm-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  border-radius: 20px;
+  background:
+    radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.13), transparent 40%),
+    radial-gradient(circle at 90% 10%, rgba(6, 182, 212, 0.09), transparent 30%);
+}
+
+.csm-inner {
+  position: relative;
+  padding: 32px;
+}
+
+/* ── Header ── */
+.csm-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #64748b;
+  margin-bottom: 8px;
+}
+
+.csm-title {
+  font-family: 'Sora', sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #818cf8, #60a5fa, #22d3ee);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.csm-subtitle {
+  font-size: 13px;
+  color: rgba(148, 163, 184, 0.72);
+  line-height: 1.65;
+  max-width: 440px;
+}
+
+.csm-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.06);
+  margin: 24px 0;
+}
+
+/* ── Field ── */
+.csm-field-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.csm-field-label span:first-child {
+  font-size: 13px;
+  font-weight: 500;
+  color: #cbd5e1;
+}
+
+.csm-field-req {
+  font-size: 11px;
+  color: #f87171;
+  letter-spacing: 0.02em;
+}
+
+/* ── Select ── */
+.csm-select-wrap {
+  position: relative;
+}
+
+.csm-select-wrap::after {
+  content: '';
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 4px solid transparent;
+  border-right: 4px solid transparent;
+  border-top: 5px solid #64748b;
+  pointer-events: none;
+}
+
+.csm-select {
+  width: 100%;
+  padding: 12px 40px 12px 16px;
+  background: #080e1c;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  color: #e2e8f0;
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  -webkit-appearance: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.csm-select:hover {
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+.csm-select:focus {
+  border-color: rgba(99, 102, 241, 0.55);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+/* ── Summary Card ── */
+.csm-summary {
+  margin-top: 16px;
+  border: 1px solid rgba(52, 211, 153, 0.18);
+  border-radius: 14px;
+  background: rgba(52, 211, 153, 0.04);
+  padding: 16px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  animation: csm-fadein 0.25s ease both;
+}
+
+@keyframes csm-fadein {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.csm-summary-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: rgba(52, 211, 153, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: #34d399;
+}
+
+.csm-summary-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #34d399;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.csm-summary-row {
+  font-size: 13px;
+  color: #94a3b8;
+  line-height: 1.85;
+}
+
+.csm-summary-row strong {
+  color: #f1f5f9;
+  font-weight: 500;
+}
+
+/* difficulty badges */
+.csm-badge {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 20px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  vertical-align: middle;
+  margin-left: 4px;
+  text-transform: uppercase;
+}
+
+.csm-badge--easy   { background: rgba(52,211,153,0.12); color: #34d399; border: 1px solid rgba(52,211,153,0.25); }
+.csm-badge--medium { background: rgba(251,191,36,0.12); color: #fbbf24; border: 1px solid rgba(251,191,36,0.25); }
+.csm-badge--hard   { background: rgba(251,113,133,0.12); color: #fb7185; border: 1px solid rgba(251,113,133,0.25); }
+
+/* ── Footer ── */
+.csm-footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.csm-btn-cancel {
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  color: #94a3b8;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.csm-btn-cancel:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #e2e8f0;
+  border-color: rgba(255, 255, 255, 0.15);
+}
+
+.csm-btn-create {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 10px 22px;
+  border-radius: 10px;
+  border: none;
+  background: linear-gradient(135deg, #6366f1, #3b82f6, #06b6d4);
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
+}
+
+.csm-btn-create:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 26px rgba(99, 102, 241, 0.45);
+}
+
+.csm-btn-create:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.csm-btn-create:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}

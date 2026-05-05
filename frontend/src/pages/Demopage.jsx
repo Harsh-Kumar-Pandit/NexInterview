@@ -82,21 +82,7 @@ const HIGHLIGHTS = [
   },
 ];
 
-const STACK = [
-  { label: "React", emoji: "⚛️" },
-  { label: "Node.js", emoji: "🟢" },
-    { label: "CodeRabbit", emoji: "🐰" },
-  { label: "Stream", emoji: "📹" },
-  { label: "Inngest", emoji: "⚙️" },
-  { label: "Sevalla", emoji: "🚀" },
-  { label: "Clerk", emoji: "🔐" },
-  { label: "Monaco Editor", emoji: "📝" },
-  { label: "Clerk Auth", emoji: "🔑" },
-  { label: "MongoDb", emoji: "🐘" },
-  { label: "Dasiy Ui", emoji: "🧠" },
-  { label: "Tailwind CSS", emoji: "🎨" },
-  { label: "Vite", emoji: "⚡" },
-];
+
 
 const STATS = [
   { num: "10K+",  label: "Active Users" },
@@ -185,14 +171,7 @@ export default function DemoPage() {
           ))}
         </div>
 
-        <div className="demo-section-label">Built With</div>
-        <div className="demo-stack">
-          {STACK.map((t) => (
-            <div className="demo-stack-pill" key={t.label}>
-              <span>{t.emoji}</span> {t.label}
-            </div>
-          ))}
-        </div>
+        
 
         <div className="demo-section-label">By the Numbers</div>
         <div className="demo-stats">

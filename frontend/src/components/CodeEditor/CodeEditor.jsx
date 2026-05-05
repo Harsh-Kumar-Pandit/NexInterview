@@ -13,6 +13,7 @@ const CodeEditor = ({
   isAnalyzing,
   onAnalyzeCode,
   showAnalyzeButton,
+  onResetCode,
 }) => {
   return (
     <div className="h-full bg-[#0d0f1e] flex flex-col">
@@ -97,23 +98,67 @@ const CodeEditor = ({
   `}</style>
 </button>)}
 
+<button
+  onClick={onResetCode}
+  className="group relative flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium 
+  text-indigo-300 border border-indigo-500/20 
+  bg-gradient-to-r from-indigo-500/10 to-purple-500/10
+  backdrop-blur-md
+  transition-all duration-300
+  hover:from-indigo-500/20 hover:to-purple-500/20
+  hover:border-indigo-400/40
+  hover:shadow-[0_0_12px_rgba(139,92,246,0.3)]
+  active:scale-95"
+>
+  {/* Glow effect */}
+  <span className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 blur-md"></span>
+
+  {/* Icon */}
+  <svg
+    className="w-4 h-4 transition-transform duration-300 group-hover:rotate-180"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    viewBox="0 0 24 24"
+  >
+    <path d="M4 4v6h6M20 20v-6h-6" />
+    <path d="M20 9a8 8 0 00-14-3M4 15a8 8 0 0014 3" />
+  </svg>
+
+  {/* Text */}
+  <span className="relative z-10">Reset</span>
+</button>
+
         <button
-          className="flex items-center gap-2 px-3 py-1.5 bg-indigo-600 text-white rounded text-sm disabled:opacity-50"
-          disabled={isRunning}
-          onClick={onRunCode}
-        >
-          {isRunning ? (
-            <>
-              <Loader2Icon className="size-4 animate-spin" />
-              Running...
-            </>
-          ) : (
-            <>
-              <PlayIcon className="size-4" />
-              Run
-            </>
-          )}
-        </button>
+  onClick={onRunCode}
+  disabled={isRunning}
+  className="group relative flex items-center gap-2 px-4 py-1.5 rounded-lg text-sm font-medium 
+  text-white overflow-hidden
+  bg-gradient-to-r from-indigo-600 to-purple-600
+  transition-all duration-300
+  hover:from-indigo-500 hover:to-purple-500
+  hover:shadow-[0_0_18px_rgba(99,102,241,0.5)]
+  active:scale-95
+  disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:shadow-none"
+>
+  {/* animated glow layer */}
+  <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-r from-indigo-500 to-purple-500 blur-md"></span>
+
+  {/* content */}
+  <span className="relative flex items-center gap-2 z-10">
+    {isRunning ? (
+      <>
+        <Loader2Icon className="size-4 animate-spin" />
+        Running...
+      </>
+    ) : (
+      <>
+        <PlayIcon className="size-4 transition-transform duration-300 group-hover:translate-x-1" />
+        Run
+      </>
+    )}
+  </span>
+</button>
       </div>
 
       {/* EDITOR */}

@@ -1,0 +1,155 @@
+/* ============================================================
+   Dashboard.css — NexInterview
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Outfit:wght@400;500;600;700&display=swap');
+
+/* ── Page Shell ── */
+.dash-page {
+  min-height: 100vh;
+  background: #060814;
+  color: #f1f5f9;
+  font-family: 'Outfit', sans-serif;
+}
+
+.dash-ambient {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(circle at top left,  rgba(99,102,241,0.10) 0%, transparent 28%),
+    radial-gradient(circle at top right, rgba(14,165,233,0.08) 0%, transparent 24%);
+}
+
+.dash-body {
+  position: relative;
+  z-index: 10;
+  padding-top: 64px;
+}
+
+.dash-inner {
+  max-width: 1220px;
+  margin: 0 auto;
+  padding: 20px 24px 64px;
+}
+
+/* ── Overview heading ── */
+.dash-overview {
+  margin-top: 22px;
+}
+
+.dash-overview-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #475569;
+  margin: 0;
+}
+
+.dash-overview-title {
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-family: 'Sora', sans-serif;
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  color: #f1f5f9;
+  line-height: 1.25;
+}
+
+.dash-overview-title .dash-name {
+  color: #a5b4fc;
+}
+
+/* ── Main grid ── */
+.dash-grid {
+  margin-top: 28px;
+  display: grid;
+  grid-template-columns: 280px minmax(0, 1fr);
+  gap: 20px;
+  align-items: start;
+}
+
+.dash-right {
+  display: flex;
+  flex-direction: column;
+}
+
+.dash-recent-wrap {
+  margin-top: 20px;
+}
+
+/* ── Empty state ── */
+.dash-empty {
+  text-align: center;
+  padding: 60px 24px;
+  margin-top: 28px;
+  background: #0d111d;
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 16px;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+}
+
+.dash-empty-icon {
+  font-size: 36px;
+  margin-bottom: 14px;
+}
+
+.dash-empty-title {
+  color: #f1f5f9;
+  font-family: 'Sora', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0;
+}
+
+.dash-empty-text {
+  color: #64748b;
+  margin-top: 8px;
+  margin-bottom: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.dash-empty-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 24px;
+  padding: 11px 28px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: 1px solid rgba(129,140,248,0.35);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  cursor: pointer;
+  letter-spacing: 0.01em;
+  transition: all 0.2s;
+  box-shadow: 0 4px 18px rgba(99,102,241,0.3);
+}
+
+.dash-empty-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 24px rgba(99,102,241,0.45);
+}
+
+/* ── Responsive ── */
+@media (max-width: 600px) {
+  .dash-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    align-items: stretch;
+  }
+
+  .dash-inner {
+    padding: 16px 16px 48px;
+  }
+
+  .dash-overview-title {
+    font-size: 1.3rem;
+  }
+}
