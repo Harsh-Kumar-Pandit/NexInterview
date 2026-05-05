@@ -17,7 +17,7 @@ export default function Navbar() {
           </div>
           <div className="nexnav-wordmark">
             <span className="nexnav-name">NexInterview</span>
-            <span className="nexnav-tagline">Live Coding Platform</span>{" "}
+            <span className="nexnav-tagline">AI-Powered Interview Platform</span>{" "}
           </div>
         </Link>
 

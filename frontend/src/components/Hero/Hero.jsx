@@ -44,9 +44,8 @@ const handleStartInterview = () => {
 
             <p className="hero-sub">
               <p className="hero-sub">
-                Simulate real interview experiences with live video calls,
-                shared coding, and multi-language support — so you're ready when
-                it actually matters.
+                Live coding, AI feedback, and real interview scenarios — built
+                for serious preparation.
               </p>
             </p>
 
