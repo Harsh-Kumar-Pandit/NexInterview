@@ -61,7 +61,11 @@ const [isAnalyzing, setIsAnalyzing] = useState(false);
   setOutput(null);
 
   try {
-    const result = await executeCode(selectedLanguage, code);
+    // determine whether user modified the starter code
+    const starter = currentProblem.starterCode[selectedLanguage] || "";
+    const runTests = code !== starter;
+
+    const result = await executeCode(selectedLanguage, code, runTests);
 
     setOutput(result);
     setIsRunning(false);

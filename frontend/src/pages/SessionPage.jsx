@@ -89,8 +89,10 @@ function SessionPage() {
   const handleRunCode = async () => {
     setIsRunning(true);
     setOutput(null);
+    const starterCode = problemData?.starterCode?.[selectedLanguage] || "";
+    const runTests = code !== starterCode;
 
-    const result = await executeCode(selectedLanguage, code);
+    const result = await executeCode(selectedLanguage, code, runTests);
     setOutput(result);
     setIsRunning(false);
   };
