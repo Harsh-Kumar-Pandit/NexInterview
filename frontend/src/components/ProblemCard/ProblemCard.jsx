@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import "./ProblemCard.css";
+import "./Problemcard.css";
 
 function CodeIcon({ solved }) {
   if (solved) {

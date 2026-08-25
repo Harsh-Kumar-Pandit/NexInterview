@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router";
-import "./DemoPage.css";
+import "./Demopage.css";
 import NavbarProblemPage from "../components/Navbar/NavbarProblemPage";
 
 const FAQS = [

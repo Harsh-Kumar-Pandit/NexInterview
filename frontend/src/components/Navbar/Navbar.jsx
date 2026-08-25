@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { SignInButton, UserButton, useUser } from "@clerk/react";
 import "./style.css";
-import NexLogo from "./Nexlogo";
+import NexLogo from "./NexLogo";
 
 export default function Navbar() {
   const { isSignedIn } = useUser();

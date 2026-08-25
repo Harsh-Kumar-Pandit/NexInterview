@@ -1,5 +1,5 @@
 import React from 'react'
-import './ProblemDescriptionPanel.css'
+import './Problemdescriptionpanel.css'
 
 const getDifficultyClass = (difficulty) => {
   switch (difficulty?.toLowerCase()) {
