@@ -13,6 +13,7 @@ export const askAI = async (prompt) => {
           content: prompt,
         },
       ],
+      max_tokens: 1500,
     },
     {
       headers: {
