@@ -30,6 +30,10 @@ app.use("/api/session", sessionRoutes);
 app.use("/api/code", codeExecutionRoutes);
 app.use("/api/ai", aiRoutes);
 
+app.head("/", (req, res) => {
+  res.status(200).end();
+});
+
 app.get("/health", (req, res) => {
   res.status(200).json({ msg: "api is up and running" });
 });
